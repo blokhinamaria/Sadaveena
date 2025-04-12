@@ -4,21 +4,18 @@ body, h1, ul {
     padding: 0;
 }
 
-/* Set a background color */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-}
 
 /* Navbar */
 .navbar {
     background-color: #4CAF50;
-    color: #fff!important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
     padding: 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 20px;
 }
 
 .navbar .ul {
@@ -40,39 +37,10 @@ body {
 }
 
 /* Product Grid */
-.product-grid {
-    display:flex;
-    flex-direction: column;
-    width: 100vw;
-    align-items: center;
-    justify-content: center;
-}
-.product-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 50px;
-    /* background-color: pink; */
-    /* justify-content: space-between; */
-    padding: 20px;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-}
+
 
 /* Product Card */
-.product-card {
-    flex: 0 0 calc(33.33% - 20px); /* Adjust width for 3 cards per row with 20px gap */
-    max-width: calc(26.33% - 20px); /* Adjust max-width for 3 cards per row with 20px gap */
-    margin-bottom: 20px;
-    padding: 20px;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    text-align: center;
-    position: relative;
-    
-    gap: 20px;
-}
+
 
 /* Pseudo-classes - Hover effect on product button */
 .product-card:hover {
