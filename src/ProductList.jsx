@@ -3,7 +3,6 @@ import { useDispatch } from 'react-redux';
 import { useSelector } from "react-redux";
 
 
-import './ProductList.css'
 
 import CartItem from './CartItem';
 import { addItem } from './CartSlice';
@@ -107,7 +106,7 @@ function ProductList() {
             category: "Insect Repellent Plants",
             plants: [
                 {
-                    name: "oregano",
+                    name: "Oregano",
                     image: "https://cdn.pixabay.com/photo/2015/05/30/21/20/oregano-790702_1280.jpg",
                     description: "The oregano plants contains compounds that can deter certain insects.",
                     cost: "10"
@@ -227,26 +226,7 @@ function ProductList() {
             ]
         }
     ];
-    const styleObj={
-        backgroundColor: '#4CAF50',
-        color: '#fff!important',
-        padding: '15px',
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignIems: 'center',
-        fontSize: '20px',
-    }
-    const styleObjUl={
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        width: '1100px',
-    }
-    const styleA={
-        color: 'white',
-        fontSize: '30px',
-        textDecoration: 'none',
-    }
+    
     const handleCartClick = (e) => {
         e.preventDefault();
         setShowCart(true); // Set showCart to true when cart icon is clicked
@@ -273,60 +253,88 @@ function ProductList() {
 
     return (
         <div>
-            <div className="navbar" style={styleObj}>
-                <div className="tag">
-                <div className="luxury">
-                    <img src="https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_1280.png" alt="" />
-                    <a href="/" style={{textDecoration:'none'}}>
-                        <div>
-                            <h3 style={{color:'white'}}>Paradise Nursery</h3>
-                            <i style={{color:'white'}}>Where Green Meets Serenity</i>
-                        </div>
+            <div className="navbar">
+                    <a href="/">
+                        <img className='navbar-logo' src='./assets/Sadaveena+Logo+White.png'></img>
                     </a>
-                </div>
-                </div>
-                <div style={styleObjUl}>
-                    <div> <a href="#" onClick={(e)=> handlePlantsClick(e)} style={styleA}>Plants</a></div>
-                    <div> 
-                        <a href="#" onClick={(e) => handleCartClick(e)} style={styleA}>
-                            <h1 className='cart'>
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" id="IconChangeColor" height="68" width="68">
-                                    <rect width="156" height="156" fill="none"></rect>
-                                    <circle cx="80" cy="216" r="12"></circle>
-                                    <circle cx="184" cy="216" r="12"></circle>
-                                    <path d="M42.3,72H221.7l-26.4,92.4A15.9,15.9,0,0,1,179.9,176H84.1a15.9,15.9,0,0,1-15.4-11.6L32.5,37.8A8,8,0,0,0,24.8,32H8" fill="none" stroke="#faf9f9" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" id="mainIconPathAttribute"></path>
-                                 </svg>
-                            {totalQuantity}</h1>
+                {/* <div className='navbar-links'>
+                    <a href="#" onClick={(e)=> handlePlantsClick(e)}>Plants</a>
+                    <a href="#" onClick={(e)=> handlePlantsClick(e)}>Plants</a>
+                </div> */}
+                <div className='cart'> 
+                        <a href="#" onClick={(e) => handleCartClick(e)}>
+                            <span className="material-symbols-outlined">shopping_bag
+                            </span>
+                            <h4 className='cart-number'>
+                                    {totalQuantity}
+                                </h4>
                         </a>
-                    </div>
                 </div>
             </div>
             {!showCart ? (
-            <div className="product-grid">
-                {plantsArray.map((category, index) => (
-                    <div key={index}>
-                        <h3>{category.category}</h3>
-                        <div className='product-list'>
-                                {category.plants.map((plant, plantIndex) => (
-                                <div className='product-card' key={plantIndex}>
-                                    <img className="product-image" src={plant.image} alt={plant.name}/>
-                                    <div className='product-title'>{plant.name}</div>
-                                    <div className='description'>{plant.description}</div>
-                                    <div className='cost'>${plant.cost}</div>
-                                    <div className='add-to-cart-button'>
-                                    <button className='add-to-cart btn-primary' onClick={() => handleAddToCart(plant)} disabled={!!addedToCart[plant.name]}>{addedToCart[plant.name] ? "Added to Cart" : "Add to Cart"}</button>
-                                    </div>
-                                </div>))};
+                <>
+                <div className='page-intro'>  
+                    <div className='page-intro-background'>
+                        <img src='./assets/Homepage+Colorful+leaves.jpg' style={{ objectPosition: "49.07353792704111% 68.00850106263283%"}}></img>
+                        <div className='page-intro-background-overlay'></div>
+                    </div>
+                    <div className='page-intro-content-wrapper'>
+                        <div className='page-intro-content'>
+                            <h2>Choose Your Plants</h2>
+                            <p>Our plants are one-of-a-kind, carefully crafted by hand, recycled fabric artworks. Explore the full collection below</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div className="product-grid">
+                    {plantsArray.map((category, index) => (
+                        <div key={index} style={{ marginBottom:"55px"}}>
+                            {/* <h3>{category.category}</h3> */}
+                                <div className='product-list'>
+                                    {category.plants.map((plant, plantIndex) => (
+                                    <div className='product-card' key={plantIndex}>
+                                        <a className='product-link'
+                                        // onClick={() => handleAddToCart(plant)}
+                                        >
+                                            <figure className='product-image-container'>
+                                                <img className="product-image has-overlay" src={plant.image} alt={plant.name}/>
+                                                <img className="product-image overlay" src={plant.image} alt={plant.name}/>
+                                            </figure>
+                                            <div className='product-title'>{plant.name}</div>
+                                            <div className='product-cost'>${plant.cost}</div>
+                                            <div className='product-availability'>{plant.availability}</div>
+                                            <button className='add-to-cart primary-button' onClick={() => handleAddToCart(plant)} disabled={!!addedToCart[plant.name]}>{addedToCart[plant.name] ? "Added to Cart" : "Add to Cart"}</button>
+                                    
+                                        </a>
+                                </div>))}
                             </div>
                         </div>
-                    
-                ))}
-
-            </div>
+                    ))}
+                </div>
+                 
+            </>
             ) : (
             <CartItem onContinueShopping={handleContinueShopping}/>
             )}
+            <div className='footer'>
+                        <a href="/">
+                            <img className='navbar-logo' src='./assets/Sadaveena+Logo+White.png'></img>
+                        </a>
+                    <div className='footer-links'>
+                        <a href="/">
+                            Delivery and Return Policy
+                        </a>
+                        <a href="/">
+                            Terms and Conditions
+                        </a>
+                        <a href="/">
+                            Contact us at SadaveenaPlants@gmail.com
+                        </a> 
+                    </div>
+                       
+            </div>
         </div>
+        
     );
 }
 
