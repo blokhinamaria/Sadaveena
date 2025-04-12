@@ -254,7 +254,7 @@ function ProductList() {
     return (
         <div>
             <div className="navbar">
-                    <a href="/">
+                    <a href="/Sadaveena/">
                         <img className='navbar-logo' src='./assets/Sadaveena+Logo+White.png'></img>
                     </a>
                 {/* <div className='navbar-links'>
