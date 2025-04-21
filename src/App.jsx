@@ -1,49 +1,61 @@
+//Import React libraries
+import React, { useState, useLayoutEffect, useEffect } from 'react';
+import { Provider } from 'react-redux';
+import { store } from './store.js';
+import { BrowserRouter as Router, Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 
-import React, { useState } from 'react';
-import ProductList from './ProductList';
+//Import other components 
+import WelcomePage from './Components/WelcomePage.jsx';
+import Layout from './Components/Layout.jsx';
+import Collection from './Components/Collection.jsx';
+import Cart from './Components/Cart.jsx';
+
+
+//Import CSS
 import './App.css';
-import AboutUs from './AboutUs';
-
 
 function App() {
   
-  const [showProductList, setShowProductList] = useState(true);
+  const Wrapper = ({ children }) => {
+    // Scroll to the top of the page when the route changes
+    const location = useLocation();
+  
+    useLayoutEffect(() => {
+      
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    }, [location.pathname]);
 
-  const handleGetStartedClick = () => {
-    setShowProductList(true);
+    //Navigate to Welcome page on reload 
+    const navigate = useNavigate();
+
+    useEffect(() => {
+      navigate('/welcome');
+    }, []);
+  
+    return children;
   };
 
-
   return (
-    <div className="app-container">
-      
-      <div className="landing-page">
-          <div className="page-intro-background">
-            <img src='./assets/LandingPage+Background.jpg'></img>
-            <div className='page-intro-background-overlay'></div>
-          </div>
-          <div className="landing_content-wrapper">
-          <div className="landing_content">
-            <h1>Handmade Fabric Plants</h1>
-              <div className="divider"></div>
-              <p>Explore the blend of artistry and sustainability with unique plant sculptures made with recycled fabrics. Our plants are meticulously crafted to decorate and embody a statement of conscious living and artistic appreciation.</p>
-          
-            <button className="get-started-button" onClick={handleGetStartedClick}>
-              Get Started
-            </button>
-            
-          </div>
-            {/* <div className="aboutus_container">
-            <AboutUs/>
-            </div> */}
-            </div>
+        <Provider store={store}>
+            <Router basename="/Sadaveena/">
+              <Wrapper>
+                <Routes>
+                  <Route index path="/welcome" element={<WelcomePage/>}></Route>
+                  <Route path="/" element={<Layout/>}>
+                      <Route index element={<Collection />} />
+                      {/* <Route path="/exhibition" element={<Login />} />
+                      <Route path="/about" element={<About />} />
+                      <Route path="/custom" element={<Custome />} /> */}
+                      <Route path="/cart" element={<Cart />} />
+                  </Route>
+                </Routes>
+                </Wrapper>
+                {/* <Footer /> */}
+            </Router>
+        </Provider>
 
-      </div>
-      
-      <div className={`product-list-container ${showProductList ? 'visible' : ''}`}>
-        <ProductList />
-      </div>
-    </div>
+
+
   );
 }
 
