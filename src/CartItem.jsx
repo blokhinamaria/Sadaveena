@@ -47,7 +47,7 @@ const CartItem = ({ onContinueShopping }) => {
   const calculateUnitCost = (item) => {
     const unitCost = parseFloat(item.cost) * item.quantity;
     return unitCost;
-  };
+  };  
 
   const totalQuantity = useSelector(calculateTotalQuantity);
   

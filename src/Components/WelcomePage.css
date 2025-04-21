@@ -1,0 +1,14 @@
+.welcome-page-intro {
+    box-sizing: border-box;
+    height: 100vh;
+    display: flex;
+    
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+  }
+
+.get-started-button {
+    margin-top: 2em;
+  }
+

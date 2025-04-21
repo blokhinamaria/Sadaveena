@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 
 import CartItem from './CartItem';
 import { addItem } from './CartSlice';
-import {calculateTotalQuantity} from './CartSlice';
+import { calculateTotalQuantity } from './CartSlice';
 
 function ProductList() {
     const dispatch = useDispatch();
