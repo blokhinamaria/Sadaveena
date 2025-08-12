@@ -3,8 +3,9 @@ import React from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 
+import '../CartItem.css';
 
-import { removeItem, updateQuantity } from '../CartSlice';
+import { CartSlice, removeItem, updateQuantity } from '../CartSlice';
 import { calculateTotalQuantity } from '../CartSlice';
 
 const Cart = () => {

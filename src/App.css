@@ -423,7 +423,7 @@ p {
   align-items: center;
   justify-content: center;
   column-gap: 2%;
-  row-gap: 55px;
+  row-gap: 100px;
 }
 
 .product-card {
