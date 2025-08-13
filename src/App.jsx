@@ -45,7 +45,7 @@ function App() {
                       <Route index element={<Collection />} />
                       {/* <Route path="/exhibition" element={<Login />} />
                       <Route path="/about" element={<About />} />
-                      <Route path="/custom" element={<Custome />} /> */}
+                      <Route path="/custom" element={<Custom />} /> */}
                       <Route path="/cart" element={<Cart />} />
                   </Route>
                 </Routes>

@@ -2,6 +2,7 @@
 
 .cart-item {
   display: flex;
+  max-width: 600px;
   border-bottom: 1px solid #ccc;
   
   padding: 10px 0;
