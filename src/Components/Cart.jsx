@@ -3,7 +3,7 @@ import React from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 
-import '../CartItem.css';
+import './Cart.css';
 
 import { CartSlice, removeItem, updateQuantity } from '../CartSlice';
 import { calculateTotalQuantity } from '../CartSlice';
@@ -56,28 +56,31 @@ const Cart = () => {
     return (
         <>
             <div className="cart-container">
-                <h1>Shopping Cart</h1>
-                <h4>Total Cart Amount: ${calculateTotalAmount()}</h4>
-                <div>{totalQuantity} Items in your Cart</div>
-                <div>
+                <div className="cart-details">
+                  <h1>Shopping Cart</h1>
+                  <h4>Total Cart Amount: ${calculateTotalAmount()}</h4>
+                  <div>{totalQuantity} Items in your Cart</div>
+                </div>
+                <div className="cart-items">
                     {cart.map(item => (
-                        <div className="cart-item" key={item.name}>
-                            <img className="cart-item-image" src={item.image} alt={item.name} />
-                            <div className="cart-item-details">
-                                <div className="cart-item-name"><h2>{item.name}</h2></div>
-                                <div className="cart-item-cost">Price: ${item.cost}</div>
-                                <div className="cart-item-quantity">
-                                    <button className="cart-item-button cart-item-button-dec" onClick={() => handleDecrement(item)}>–</button>
-                                    <span className="cart-item-quantity-value">{item.quantity}</span>
-                                    <button className="cart-item-button cart-item-button-inc" onClick={() => handleIncrement(item)}>+</button>
+                      <div className="cart-item" key={item.name}>
+                                <img className="flex-child cart-item-image" src={item.image} alt={item.name} />
+                                <div className="flex-child cart-item-name"><h2>{item.name}</h2></div>
+                                <div className="flex-child cart-item-details">
+                                    <div className="cart-item-cost">Price: ${item.cost}</div>
+                                    <div className="cart-item-quantity">
+                                        <button className="cart-item-button cart-item-button-dec" onClick={() => handleDecrement(item)}>–</button>
+                                        <span className="cart-item-quantity-value">{item.quantity}</span>
+                                        <button className="cart-item-button cart-item-button-inc" onClick={() => handleIncrement(item)}>+</button>
+                                    </div>    
                                 </div>
-                                <div className="cart-item-total">Total: ${calculateUnitCost(item)}</div>
-                                <button className="cart-item-delete" onClick={() => handleRemove(item)}>Remove</button>
-                            </div>
-                        </div>
+                                <div className="flex-child cart-item-details">
+                                  <div className="cart-item-total">Total: ${calculateUnitCost(item)}</div>
+                                  <button className="cart-item-delete" onClick={() => handleRemove(item)}>Remove</button>
+                                </div>
+                      </div>
                     ))}
                 </div>
-      
                 <div className='total_cart_amount'>
                     <h4>Total Cart Amount: ${calculateTotalAmount()}</h4>
                 </div>
