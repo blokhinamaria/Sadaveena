@@ -1,0 +1,127 @@
+.cart-container{
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--white);
+    text-align: center;
+}
+.cart-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.cart-items {
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.cart-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+  flex-wrap: wrap;
+  width: 800px;
+  border-bottom: 1px solid #ccc;
+  padding: 20px 0; 
+}
+
+.flex-child {
+    display: flex;
+    flex-direction: column;       
+    align-items: center;          
+    width: 200px;                
+    box-sizing: border-box;
+}
+
+.flex-child h2 {
+    margin: 5px;
+}
+
+.cart-item-image {
+  width: 132px;
+  height: 132px;
+  vertical-align: middle;
+  object-fit: cover;
+}
+
+.cart-item-cost {
+  margin-bottom: 10px;
+  align-items: center;
+}
+
+.cart-item-quantity {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart-item-button {
+  background-color: var(--light-grey);
+  border: none;
+  color: var(--black);
+  font-size: 1.5em;
+  cursor: pointer;
+  padding: 5px 30px;
+  min-height: 37.5px;
+  transition: background-color 1s ease;
+}
+
+.cart-item-button:hover {
+  background-color: var(--white);
+}
+
+.cart-item-quantity-value {
+  font-size: 1em;
+  margin: 0 20px;
+}
+
+.cart-item-total {
+  font-weight: 700;
+}
+
+.cart-item-delete {
+  margin-top: 10px;
+  font-family: "Trirong", serif;
+  font-weight: 500;
+  font-size: 0.8em;
+  padding: 5px 30px;
+  min-height: 37.5px;
+  width: auto;
+  background-color: transparent;
+  box-shadow: none;
+  border: none;
+  color: var(--light-grey);
+  transition: background-color 1s ease, color 0.5s ease;
+}
+
+.cart-item-delete:hover {
+  background-color: var(--white);
+  color: var(--black);
+}
+
+.continue_shopping_btn {
+ width: 500px; 
+}
+
+.cart-button {
+  margin-top: 35px;
+  margin-bottom: 10px; 
+}
+
+@media (max-width: 800px) {
+  .cart-item {
+    flex-direction: column;  
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+    width: 100%;           /* Take full container width */
+  }
+  .flex-child {
+    width: 100%;                    /* Take full container width */
+  }
+  .continue_shopping_btn {
+    width: 100%;
+  }
+}
