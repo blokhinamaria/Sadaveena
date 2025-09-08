@@ -57,8 +57,7 @@ const Layout = () => {
                         <a href="/">
                             Contact us at SadaveenaPlants@gmail.com
                         </a> 
-                    </div>
-                       
+                    </div>      
       </div>
     </>
   )
